@@ -31,7 +31,7 @@ Dentro da pasta screens tem o arquivo Profile, você terá um objeto com as info
     - Os valores dos campos deverão conter a classe `contact-value` com exceção dos valores dos idiomas que deve conter a classe `contact-language`
 
 ### Exemplo
-[https://codenation-challenges.s3-us-west-1.amazonaws.com/react-native-2/react-native-2.webm!](https://codenation-challenges.s3-us-west-1.amazonaws.com/react-native-2/react-native-2.webm)
+[https://codenation-challenges.s3-us-west-1.amazonaws.com/react-native-2/react-native-2.webm](https://codenation-challenges.s3-us-west-1.amazonaws.com/react-native-2/react-native-2.webm)
 
 ## Rodando a aplicação
 Na primeira execução rodar o comando:
