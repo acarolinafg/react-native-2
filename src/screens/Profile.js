@@ -1,5 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View} from 'react-native';
+import Header from '../components/Header';
+import AccelerationItem from '../components/AccelerationItem';
 
 const profile = {
   "picture": "https://secure.gravatar.com/avatar/f50a9db56e231198af3507f10b5d5491?d=mm",
@@ -22,11 +24,12 @@ const profile = {
 }
 
 export default class Profile extends React.PureComponent {
-
   render() {
-
     return (
-      <View></View>
+      <View>
+        <Header/>
+        <AccelerationItem item={profile} />  
+      </View>
     );
   }
 }
