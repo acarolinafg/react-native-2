@@ -1,20 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View,  FlatList } from 'react-native';
 
 export default function AccelerationItem({ item }) {
   const profile = { ...item };
   return (
 	  <View style={styles.container}>
-      <View style={styles.userHeader}>
-        <Image
-          source={{ uri: profile.picture }}
-          style={styles.avatar}
-          className={"profile-image"}
-        />
-        <Text style={styles.name} className={"contact-name"}>{profile.name}</Text>
-      </View>
-
       <View className={"contact-content"} style={styles.userContainer}>
         <Text className={"contact-label"} style={styles.label}>Linkedin:</Text>
         <Text className={"contact-value"} style={styles.input}>{profile.linkedin}</Text>
@@ -51,20 +42,6 @@ export default function AccelerationItem({ item }) {
 const styles = StyleSheet.create({
   container:{
     margin:10
-  },
-  userHeader:{
-    flexDirection:'row',
-    alignItems: 'center',
-  },
-  avatar:{
-    width: 45, 
-    height: 45,
-    borderRadius:22
-  },
-  name: {
-    color:'#7800FF',
-    fontSize:20,
-    paddingLeft:10
   },
   label:{
     fontSize:12,
