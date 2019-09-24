@@ -6,7 +6,7 @@ export default function AccelerationItem({ item }) {
   const profile = { ...item };
   return (
 	  <View style={styles.container}>
-      <View className={"contact-content"} style={styles.userContainer}>
+      <View className={"contact-content"} style={[styles.userContainer, { opacity: 1 }]}>
         <Text className={"contact-label"} style={styles.label}>Linkedin:</Text>
         <Text className={"contact-value"} style={styles.input}>{profile.linkedin}</Text>
 
@@ -14,7 +14,7 @@ export default function AccelerationItem({ item }) {
         <Text className={"contact-value"} style={styles.input}>{profile.github}</Text>
       </View>
 
-      <View className={"contact-content"} style={styles.userContainer}>
+      <View className={"contact-content"} style={[styles.userContainer, { opacity: 1 }]}>
         <Text className={"contact-label"} style={styles.label}>E-mail:</Text>
         <Text className={"contact-value"} style={styles.input}>{profile.email}</Text>
 
