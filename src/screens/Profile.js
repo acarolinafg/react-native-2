@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet,Image, Text} from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Image, ScrollView } from 'react-native';
 import AccelerationItem from '../components/AccelerationItem';
 
 const profile = {
@@ -23,49 +23,40 @@ const profile = {
 }
 
 export default class Profile extends React.PureComponent {
-  state = { animating: true };
+  state = { loading: true };
 
   closeActivityIndicator = () =>
 
     setTimeout(
       () =>
         this.setState({
-          animating: false
+          loading: false
         }),
       600
     );
   componentDidMount = () => this.closeActivityIndicator();
 
   render() {
-    const animating = this.state.animating; 
+    const loading = this.state.loading; 
 
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.header}>
           <Image 
+            className={"header-image"}
             style={styles.logo} 
             source={{ uri: 'https://forum.codenation.com.br/uploads/default/original/2X/2/2d2d2a9469f0171e7df2c4ee97f70c555e431e76.png' }}
-            className={"header-image"}
           />
         </View>
-        <View style={styles.userHeader}>
-          <Image
-            source={{ uri: profile.picture }}
-            style={styles.avatar}
-            className={"profile-image"}
-          />
-          <Text style={styles.name} className={"contact-name"}>{profile.name}</Text>
-        </View>
-
-        {animating === true ? (
-          <ActivityIndicator
-            color="#7800FF"
-            size="large"
-            animating={animating}
-            style={styles.activityIndicator}
-          />
-        ) : (
-          <AccelerationItem item={profile} />
+        {this.state.loading && (
+          <View style={styles.loadingContent}>
+            <ActivityIndicator size="large" color="#7800ff" />
+          </View>
+        )}
+        {!this.state.loading && (
+          <ScrollView>
+            <AccelerationItem item={profile} />
+          </ScrollView>
         )}
       </View>
     );
@@ -73,36 +64,25 @@ export default class Profile extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({ 
+  container:{
+    flex:1,
+    backgroundColor:'#fff'
+  },
   header:{
-    borderBottomColor:'#7800FF',
-    borderBottomWidth:2
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderBottomColor: '#7800ff',
+    borderBottomWidth: 2,
+    padding: 16,
+    paddingTop: 55
   },
   logo:{
-    width: '100%', 
-    height: 95,
-    marginLeft: 10,
-    marginTop: 30
-  },
-  userHeader:{
-    margin:10,
-    flexDirection:'row',
-    alignItems: 'center',
-  },
-  avatar:{
-    width: 45, 
     height: 45,
-    borderRadius:22
+    width: 250
   },
-  name: {
-    color:'#7800FF',
-    fontSize:20,
-    paddingLeft:10
-  },
-  activityIndicator: {
-    flex: 1,
-    justifyContent:'center',
+  loadingContent: {
     alignItems: 'center',
-    height: 80,
-    marginTop:180
+    flex: 1,
+    justifyContent: 'center'
   }
 });
