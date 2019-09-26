@@ -1,9 +1,18 @@
 import React from 'react';
 import moment from 'moment';
-import { StyleSheet, Text, View, Image,  FlatList} from 'react-native';
+import { StyleSheet, Text, View, Image,  FlatList,  Animated} from 'react-native';
 
 export default function AccelerationItem({ item }) {
+  fadeAnimation = new Animated.Value(0);
+
   const profile = { ...item };
+  
+  Animated.timing(this.fadeAnimation, {
+    toValue: 1,
+    duration: 600,
+    useNativeDriver: true
+  }).start()
+
   return (
 	    <View style={styles.container}>
         <View style={styles.userHeader}>
@@ -15,15 +24,15 @@ export default function AccelerationItem({ item }) {
           <Text style={styles.name} className={"contact-name"}>{profile.name}</Text>
         </View>
 
-        <View className={"contact-content"} style={[styles.userContainer, { opacity: 1 }]}>
+        <Animated.View className={"contact-content"} style={[styles.userContainer, { opacity: this.fadeAnimation }]}>
           <Text className={"contact-label"} style={styles.label}>Linkedin:</Text>
           <Text className={"contact-value"} style={[styles.text, styles.mBottom]}>{profile.linkedin}</Text>
 
           <Text className={"contact-label"} style={styles.label}>GitHub:</Text>
           <Text className={"contact-value"} style={[styles.text, styles.mBottom]}>{profile.github}</Text>
-        </View>
+        </Animated.View>
 
-        <View className={"contact-content"} style={[styles.userContainer, { opacity: 1 }]}>
+        <Animated.View className={"contact-content"} style={[styles.userContainer, { opacity: this.fadeAnimation }]}>
           <Text className={"contact-label"} style={styles.label}>E-mail:</Text>
           <Text className={"contact-value"} style={[styles.text, styles.mBottom]}>{profile.email}</Text>
 
@@ -43,7 +52,7 @@ export default function AccelerationItem({ item }) {
             keyExtractor={item => item}
             horizontal
           />
-        </View>
+        </Animated.View>
       </View>
   );
 }
